@@ -20,32 +20,19 @@ div{
     justify-content: center;
     align-items: center;
 }
-
-
-
-
-
 .div-logo img {
     width: 30vw;
 }
-
 
 .div-name {
     margin: 4vw;
 
 }
 
-
 .div-name p{
     color: rgb(255, 255, 255);
     font-size: 24px;
 }
-
-
-
-
-
-
 
 .a-div-social-media{
     margin: 3vw;
