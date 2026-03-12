@@ -1,3 +1,44 @@
-body {
-    background-color: #006699;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body{
+    background-color: #212121;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.div-logo {
+    margin: 3vw;
+}
+
+.div-logo img {
+    width: 30vw;
+}
+
+.div-name p{
+    color: rgb(255, 255, 255);
+}
+.a-div-social-media{
+    margin: 3vw;
+}
+.div-social-media {
+    width: 70vw;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2vw;
+    background-color: #00629B;
+    
+}
+.div-social-media p{
+    color: rgb(255, 255, 255);
+
 }
