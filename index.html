@@ -1,26 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rama Estudiantil IEEE UNCP</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
 </head>
-<body>
-    <div class="div-logo">
-        <img src="img/logo-ieee-uncp.png" alt="">
-    </div>
-    <div class="div-name">
-        <p>Rama Estudiantil IEEE UNCP</p>
-    </div>
-    <a href="https://www.facebook.com/share/18FszRNFbJ/" class="a-div-social-media"><div class="div-social-media">
-        <p>Facebook</p>
-    </div></a>
-    <a href="https://www.instagram.com/reieee_uncp?igsh=OXM3OWhpMGNqNXNv" class="a-div-social-media"><div class="div-social-media">
-        <p>Instagram</p>
-    </div></a>
-    <a href="https://www.linkedin.com/company/ramaestudiantil-ieeeuncp/" class="a-div-social-media"><div class="div-social-media">
-        <p>Linkedin</p>
-    </div></a>
+
+<body class="page-index">
+
+    <!-- Fondo animado con partículas sutiles -->
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-glow" aria-hidden="true"></div>
+
+    <main class="profile-container">
+
+        <!-- Logo + identidad -->
+        <header class="profile-header">
+            <div class="logo-wrapper">
+                <img src="img/logo-ieee-uncp.png" alt="Logo IEEE UNCP" class="profile-logo">
+                <div class="logo-ring" aria-hidden="true"></div>
+            </div>
+            <h1 class="profile-name">Rama Estudiantil<br><span class="name-accent">IEEE UNCP</span></h1>
+            <p class="profile-bio">Innovando, conectando y liderando el futuro tecnológico desde la Universidad Nacional
+                del Centro del Perú.</p>
+        </header>
+
+        <!-- Separador decorativo -->
+        <div class="divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-dot"></span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- Botones de navegación -->
+        <nav class="links-nav" aria-label="Enlaces de la organización">
+
+            <!-- CTA destacado — Únete -->
+            <a href="https://chat.whatsapp.com/BHylLi4XO7qFp4TUwMxtjE" class="link-btn link-btn--cta"
+                aria-label="Únete a la Comunidad Estudiantil por WhatsApp o Telegram">
+                <span class="link-btn__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                </span>
+                <span class="link-btn__text">Únete a la Comunidad Estudiantil</span>
+                <span class="link-btn__badge">¡Nuevo!</span>
+                <span class="link-btn__arrow" aria-hidden="true">→</span>
+            </a>
+
+            <!-- Directiva -->
+            <a href="directiva.html" class="link-btn link-btn--secondary" aria-label="Conoce a nuestra directiva">
+                <span class="link-btn__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="2" y="7" width="20" height="14" rx="2" />
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                    </svg>
+                </span>
+                <span class="link-btn__text">Conoce a Nuestra Directiva</span>
+                <span class="link-btn__arrow" aria-hidden="true">→</span>
+            </a>
+
+            <!-- Separador sección redes -->
+            <p class="section-label" aria-label="Redes sociales">Síguenos</p>
+
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/share/18FszRNFbJ/" target="_blank" rel="noopener noreferrer"
+                class="link-btn link-btn--social" aria-label="Visita nuestra página de Facebook">
+                <span class="link-btn__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                </span>
+                <span class="link-btn__text">Facebook</span>
+                <span class="link-btn__arrow" aria-hidden="true">→</span>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/reieee_uncp?igsh=OXM3OWhpMGNqNXNv" target="_blank"
+                rel="noopener noreferrer" class="link-btn link-btn--social"
+                aria-label="Visita nuestro perfil de Instagram">
+                <span class="link-btn__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                </span>
+                <span class="link-btn__text">Instagram</span>
+                <span class="link-btn__arrow" aria-hidden="true">→</span>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/company/ramaestudiantil-ieeeuncp/" target="_blank"
+                rel="noopener noreferrer" class="link-btn link-btn--social"
+                aria-label="Visita nuestro perfil de LinkedIn">
+                <span class="link-btn__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                </span>
+                <span class="link-btn__text">LinkedIn</span>
+                <span class="link-btn__arrow" aria-hidden="true">→</span>
+            </a>
+
+        </nav>
+
+        <footer class="profile-footer">
+            <p>RE IEEE UNCP 2026 &mdash; <a href="mailto:re.ieee@uncp.edu.pe">re.ieee@uncp.edu.pe</a></p>
+        </footer>
+
+    </main>
+
+    <script src="main.js"></script>
 </body>
+
 </html>

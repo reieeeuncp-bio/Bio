@@ -1,52 +1,1011 @@
-* {
+/* ============================================================
+style.css — IEEE UNCP Linktree
+Modo oscuro · Minimalista · Responsivo
+   ============================================================ */
+
+/* ── Variables globales ──────────────────────────────────── */
+:root {
+    /* Marca */
+    --ieee-blue: #00629B;
+    --ieee-blue-light: #1a82c0;
+    --ieee-blue-glow: rgba(0, 98, 155, 0.35);
+    --ieee-blue-faint: rgba(0, 98, 155, 0.08);
+
+    /* Paleta oscura */
+    --bg-base: #080c10;
+    --bg-surface: #0d1117;
+    --bg-card: #111820;
+    --bg-card-hover: #161e28;
+    --border: rgba(255, 255, 255, 0.07);
+    --border-hover: rgba(0, 98, 155, 0.5);
+
+    /* Texto */
+    --text-primary: #e8edf2;
+    --text-secondary: #8899aa;
+    --text-muted: #4a5568;
+    --text-accent: #00629B;
+
+    /* Tipografía */
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+
+    /* Espaciado */
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    --radius-full: 9999px;
+
+    /* Transiciones */
+    --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-med: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Reset & Base ────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
 }
 
-body{
-    background-color: #212121;
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ── Fondo decorativo ────────────────────────────────────── */
+.bg-grid {
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bg-glow {
+    position: fixed;
+    top: -20vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw;
+    max-width: 700px;
+    height: 60vh;
+    background: radial-gradient(ellipse at center, var(--ieee-blue-glow) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: glowPulse 6s ease-in-out infinite alternate;
+}
+
+.bg-glow--directiva {
+    top: -10vh;
+    opacity: 0.6;
+}
+
+@keyframes glowPulse {
+    from {
+        opacity: 0.5;
+        transform: translateX(-50%) scale(1);
+    }
+
+    to {
+        opacity: 0.8;
+        transform: translateX(-50%) scale(1.08);
+    }
+}
+
+/* ── Utilidad ────────────────────────────────────────────── */
+.name-accent {
+    color: var(--ieee-blue-light);
+}
+
+/* ============================================================
+   INDEX — Perfil principal
+   ============================================================ */
+
+.page-index {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 48px 20px 32px;
+}
+
+.profile-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 520px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    width: 100vw;
-    height: 100vh;
+    gap: 0;
 }
-div{
+
+/* ── Header del perfil ───────────────────────────────────── */
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    animation: fadeInDown 0.6s ease both;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo-wrapper {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-logo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border);
+    background: var(--bg-card);
+    position: relative;
+    z-index: 1;
+    transition: transform var(--transition-med), border-color var(--transition-med);
+}
+
+.logo-wrapper:hover .profile-logo {
+    transform: scale(1.04);
+    border-color: var(--ieee-blue);
+}
+
+.logo-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1.5px solid var(--ieee-blue);
+    opacity: 0.4;
+    animation: ringRotate 10s linear infinite;
+}
+
+.logo-ring::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--ieee-blue-light);
+    border-radius: 50%;
+}
+
+@keyframes ringRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.profile-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 4vw, 1.75rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+}
+
+.profile-bio {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    max-width: 380px;
+    line-height: 1.65;
+}
+
+/* ── Divisor ─────────────────────────────────────────────── */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 28px;
+    opacity: 0.35;
+}
+
+.divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+.divider-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--ieee-blue);
+}
+
+/* ── Navegación de links ─────────────────────────────────── */
+.links-nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: fadeInUp 0.6s ease 0.15s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Botón base ──────────────────────────────────────────── */
+.link-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+}
+
+.link-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.45s ease;
+}
+
+.link-btn:hover::before {
+    transform: translateX(100%);
+}
+
+.link-btn:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--ieee-blue-glow);
+}
+
+.link-btn:active {
+    transform: translateY(0px);
+}
+
+.link-btn__icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--transition-fast);
+}
+
+.link-btn__icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.link-btn:hover .link-btn__icon {
+    color: var(--ieee-blue-light);
+}
+
+.link-btn__text {
+    flex: 1;
+}
+
+.link-btn__arrow {
+    font-size: 1rem;
+    color: var(--text-muted);
+    transition: transform var(--transition-fast), color var(--transition-fast);
+    margin-left: auto;
+}
+
+.link-btn:hover .link-btn__arrow {
+    transform: translateX(4px);
+    color: var(--ieee-blue-light);
+}
+
+/* ── CTA destacado ───────────────────────────────────────── */
+.link-btn--cta {
+    background: linear-gradient(135deg, #003d61 0%, #00507e 50%, #00629b 100%);
+    border-color: rgba(0, 98, 155, 0.6);
+    font-weight: 600;
+    padding: 18px 22px;
+    box-shadow: 0 4px 20px var(--ieee-blue-glow);
+}
+
+.link-btn--cta .link-btn__icon {
+    color: #7dd3fc;
+}
+
+.link-btn--cta .link-btn__arrow {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.link-btn--cta:hover {
+    background: linear-gradient(135deg, #004d79 0%, #006aaa 50%, #007ec0 100%);
+    border-color: rgba(0, 130, 190, 0.8);
+    box-shadow: 0 8px 30px rgba(0, 98, 155, 0.5);
+    transform: translateY(-3px);
+}
+
+.link-btn__badge {
+    background: rgba(255, 255, 255, 0.15);
+    color: #bde8ff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+}
+
+/* ── Botón secundario (directiva) ────────────────────────── */
+.link-btn--secondary {
+    background: var(--bg-card);
+}
+
+.link-btn--secondary:hover {
+    background: var(--bg-card-hover);
+}
+
+/* ── Botones de redes sociales ───────────────────────────── */
+.link-btn--social {
+    background: var(--bg-surface);
+}
+
+/* ── Label sección ───────────────────────────────────────── */
+.section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 8px;
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+.profile-footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    animation: fadeInUp 0.6s ease 0.3s both;
+}
+
+/* ============================================================
+   DIRECTIVA — Página de equipo
+   ============================================================ */
+
+.page-directiva {
+    padding: 32px 20px 60px;
+    min-height: 100vh;
+}
+
+.directiva-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1060px;
+    margin: 0 auto;
+}
+
+/* ── Navegación superior ─────────────────────────────────── */
+.top-nav {
     display: flex;
     justify-content: center;
+    margin-bottom: 48px;
+    animation: fadeInDown 0.5s ease both;
+}
+
+.btn-back {
+    display: inline-flex;
     align-items: center;
-}
-.div-logo img {
-    width: 30vw;
+    gap: 8px;
+    padding: 11px 22px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition:
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast);
 }
 
-.div-name {
-    margin: 4vw;
-
+.btn-back:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--ieee-blue);
+    color: var(--text-primary);
+    transform: translateX(-3px);
 }
 
-.div-name p{
-    color: rgb(255, 255, 255);
-    font-size: 24px;
+.btn-back__arrow {
+    font-size: 1rem;
+    transition: transform var(--transition-fast);
 }
 
-.a-div-social-media{
-    margin: 3vw;
+.btn-back:hover .btn-back__arrow {
+    transform: translateX(-3px);
 }
-.div-social-media {
-    width: 70vw;
-    border: 2px solid rgb(255, 255, 255);
-    border-radius: 500px;
-    
-    padding: 2vw;
-    background-color: #00629B;
-    
-}
-.div-social-media p{
-    color: rgb(255, 255, 255);
 
+/* ── Encabezado directiva ────────────────────────────────── */
+.directiva-header {
+    text-align: center;
+    margin-bottom: 56px;
+    animation: fadeInDown 0.6s ease 0.1s both;
+}
+
+.directiva-tagline {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ieee-blue-light);
+    margin-bottom: 10px;
+}
+
+.directiva-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+}
+
+.directiva-desc {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    max-width: 440px;
+    margin: 0 auto;
+    line-height: 1.65;
+}
+
+/* ── Grid de miembros ────────────────────────────────────── */
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+/* ── Tarjeta de miembro ──────────────────────────────────── */
+.member-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    transition:
+        transform var(--transition-med),
+        border-color var(--transition-med),
+        background var(--transition-med),
+        box-shadow var(--transition-med);
+    cursor: default;
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--ieee-blue-glow);
+}
+
+/* Tarjeta featured: Presidente */
+.member-card--featured {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    text-align: left;
+    padding: 32px;
+    background: linear-gradient(135deg, #0d1820 0%, #0f1f2e 100%);
+    border-color: rgba(0, 98, 155, 0.3);
+}
+
+.member-card--featured:hover {
+    border-color: rgba(0, 130, 190, 0.6);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--ieee-blue-glow);
+}
+
+.member-card--featured .member-photo-wrapper {
+    flex-shrink: 0;
+}
+
+.member-card--featured .member-info {
+    flex: 1;
+}
+
+/* ── Foto de miembro ─────────────────────────────────────── */
+.member-photo-wrapper {
+    position: relative;
+    display: inline-flex;
+}
+
+.member-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--bg-base);
+    border: 2px solid var(--border);
+    transition: border-color var(--transition-med);
+    position: relative;
+    z-index: 1;
+}
+
+.member-card:hover .member-photo {
+    border-color: var(--ieee-blue);
+}
+
+.member-card--featured .member-photo {
+    width: 96px;
+    height: 96px;
+}
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.member-photo--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #111820, #1a2535);
+}
+
+.member-photo--placeholder svg {
+    width: 44px;
+    height: 44px;
+    color: var(--text-muted);
+}
+
+.member-card--featured .member-photo--placeholder svg {
+    width: 52px;
+    height: 52px;
+}
+
+.member-photo-ring {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1.5px solid transparent;
+    background: linear-gradient(135deg, var(--ieee-blue), transparent) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--transition-med);
+}
+
+.member-card--featured .member-photo-ring {
+    opacity: 0.5;
+}
+
+.member-card:hover .member-photo-ring {
+    opacity: 1;
+}
+
+/* ── Info del miembro ────────────────────────────────────── */
+.member-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.member-cargo {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ieee-blue-light);
+    background: var(--ieee-blue-faint);
+    border: 1px solid rgba(0, 98, 155, 0.25);
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    align-self: center;
+}
+
+.member-card--featured .member-cargo {
+    align-self: flex-start;
+}
+
+.member-nombre {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+.member-card--featured .member-nombre {
+    font-size: 1.25rem;
+}
+
+.member-desc {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    margin-top: 2px;
+    line-height: 1.55;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* Tablet (≥ 600px) */
+@media (min-width: 600px) {
+    .members-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .member-card--featured {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Desktop (≥ 900px) */
+@media (min-width: 900px) {
+    .members-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .member-card--featured {
+        grid-column: 1 / -1;
+        max-width: 560px;
+        justify-self: center;
+        width: 100%;
+    }
+}
+
+/* Móvil pequeño */
+@media (max-width: 400px) {
+    .page-index {
+        padding: 32px 16px 24px;
+    }
+
+    .link-btn {
+        font-size: 0.875rem;
+        padding: 13px 16px;
+    }
+
+    .link-btn--cta {
+        padding: 16px 18px;
+    }
+
+    .link-btn__badge {
+        display: none;
+    }
+}
+
+/* ============================================================
+   ESTRUCTURA ORGANIZACIONAL — Secciones y conectores
+   ============================================================ */
+
+/* Sección contenedora de cada nivel/comité */
+.org-section {
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+/* Título de sección (Mesa Directiva, Comités) */
+.org-section__title {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.org-section__icon {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    color: var(--ieee-blue-light);
+    opacity: 0.8;
+}
+
+.org-section__icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Conector visual entre Asesor y Mesa Directiva */
+.org-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin: 4px auto 20px;
+    height: 36px;
+}
+
+.org-connector__line {
+    flex: 1;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--ieee-blue), transparent);
+    opacity: 0.4;
+}
+
+.org-connector__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--ieee-blue);
+    opacity: 0.6;
+    flex-shrink: 0;
+}
+
+/* Secciones de comités con borde izquierdo */
+.comite-section {
+    padding-left: 16px;
+    border-left: 2px solid var(--ieee-blue-faint);
+    margin-left: 4px;
+    margin-bottom: 28px;
+    transition: border-color var(--transition-med);
+}
+
+.comite-section:hover {
+    border-left-color: rgba(0, 98, 155, 0.25);
+}
+
+/* Grid centrado para el Asesor (1 tarjeta sola) */
+.members-grid--single {
+    grid-template-columns: 1fr !important;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Grid de comité: director primero, miembros después más pequeños */
+.members-grid--comite {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+/* ── Tarjeta Asesor ───────────────────────────────────────── */
+.member-card--asesor {
+    background: linear-gradient(135deg, #0a1520 0%, #0c1d2e 60%, #0d2240 100%);
+    border-color: rgba(0, 98, 155, 0.4);
+    flex-direction: row;
+    text-align: left;
+    padding: 32px;
+    box-shadow: 0 0 40px rgba(0, 98, 155, 0.12);
+}
+
+.member-card--asesor:hover {
+    border-color: rgba(0, 130, 190, 0.65);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 98, 155, 0.4);
+}
+
+.member-card--asesor .member-photo {
+    width: 96px;
+    height: 96px;
+}
+
+.member-card--asesor .member-photo--placeholder svg {
+    width: 52px;
+    height: 52px;
+}
+
+.member-card--asesor .member-info {
+    flex: 1;
+    align-items: flex-start;
+}
+
+.member-card--asesor .member-cargo {
+    align-self: flex-start;
+}
+
+.member-card--asesor .member-nombre {
+    font-size: 1.25rem;
+}
+
+/* Badge especial para Asesor */
+.member-cargo--asesor {
+    background: rgba(0, 98, 155, 0.2) !important;
+    color: #60c4ff !important;
+    border-color: rgba(0, 150, 210, 0.4) !important;
+    font-size: 0.72rem !important;
+}
+
+/* ── Tarjeta Director de comité ──────────────────────────── */
+.member-card--director {
+    background: var(--bg-card);
+    border-color: rgba(0, 98, 155, 0.2);
+}
+
+.member-card--director:hover {
+    border-color: rgba(0, 98, 155, 0.5);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 98, 155, 0.2);
+}
+
+.member-cargo--director {
+    background: rgba(0, 98, 155, 0.12) !important;
+    color: #7dd3fc !important;
+    border-color: rgba(0, 98, 155, 0.3) !important;
+}
+
+/* ── Tarjeta Miembro (compacta) ──────────────────────────── */
+.member-card--miembro {
+    background: var(--bg-surface);
+    padding: 20px 16px;
+}
+
+.member-card--miembro .member-nombre {
+    font-size: 0.875rem;
+}
+
+.member-cargo--miembro {
+    font-size: 0.65rem !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    color: var(--text-muted) !important;
+    border-color: var(--border) !important;
+}
+
+/* Foto pequeña para miembros */
+.member-photo--sm {
+    width: 60px !important;
+    height: 60px !important;
+}
+
+.member-photo--sm svg {
+    width: 32px !important;
+    height: 32px !important;
+}
+
+/* ============================================================
+   STAGGER de entrada para tarjetas
+   ============================================================ */
+.member-card:nth-child(1) {
+    animation: fadeInUp 0.5s ease 0.10s both;
+}
+
+.member-card:nth-child(2) {
+    animation: fadeInUp 0.5s ease 0.17s both;
+}
+
+.member-card:nth-child(3) {
+    animation: fadeInUp 0.5s ease 0.24s both;
+}
+
+.member-card:nth-child(4) {
+    animation: fadeInUp 0.5s ease 0.31s both;
+}
+
+.member-card:nth-child(5) {
+    animation: fadeInUp 0.5s ease 0.38s both;
+}
+
+.member-card:nth-child(6) {
+    animation: fadeInUp 0.5s ease 0.45s both;
+}
+
+.member-card:nth-child(7) {
+    animation: fadeInUp 0.5s ease 0.52s both;
+}
+
+.member-card:nth-child(8) {
+    animation: fadeInUp 0.5s ease 0.59s both;
+}
+
+/* Stagger para botones del index */
+.links-nav .link-btn:nth-child(1) {
+    animation: fadeInUp 0.5s ease 0.15s both;
+}
+
+.links-nav .link-btn:nth-child(2) {
+    animation: fadeInUp 0.5s ease 0.22s both;
+}
+
+.links-nav .link-btn:nth-child(3) {
+    animation: fadeInUp 0.5s ease 0.29s both;
+}
+
+.links-nav .link-btn:nth-child(4) {
+    animation: fadeInUp 0.5s ease 0.36s both;
+}
+
+.links-nav .section-label {
+    animation: fadeInUp 0.5s ease 0.29s both;
+}
+
+/* ============================================================
+   Reducción de movimiento (accesibilidad)
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
